@@ -13,7 +13,7 @@ const SavedJokes = () => {
   const arrs = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const handleDelete = (index) => {
-    const itemIndex = savedJokes.findIndex((x) => x.id == index);
+    const itemIndex = savedJokes.findIndex((x) => x.id === index);
     let newJokes = [];
     for (let i = 0; i < savedJokes.length; i++) {
       if (i === itemIndex) {
