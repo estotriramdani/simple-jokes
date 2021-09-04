@@ -15,6 +15,9 @@ const Home = () => {
   const { data, error } = useSWR(url, fetcher);
   const [changeJoke, setChangeJoke] = useState(true);
 
+  if (error) {
+    console.log(error);
+  }
   useEffect(() => {
     if (data && isLoading) {
       setJoke(data);
