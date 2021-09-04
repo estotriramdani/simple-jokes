@@ -3,6 +3,8 @@ import Skeleton from 'react-loading-skeleton';
 import axios from 'axios';
 import useSWR from 'swr';
 import { Link } from 'react-router-dom';
+import JokeCardSkeleton from '../../Moleculs/JokeCard/JokeCardSkeleton';
+import JokeCard from '../../Moleculs/JokeCard';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 const url = 'https://official-joke-api.appspot.com/random_joke';
@@ -25,9 +27,9 @@ const Home = () => {
 
   const handleSaveJoke = () => {
     document.querySelector('.alert').classList.add('up');
-    // setTimeout(() => {
-    //   document.querySelector('.alert').classList.remove('up');
-    // }, 3000);
+    setTimeout(() => {
+      document.querySelector('.alert').classList.remove('up');
+    }, 600);
     if (window.localStorage.getItem('saved_jokes') === null) {
       window.localStorage.setItem('saved_jokes', '[]');
     }
@@ -58,29 +60,9 @@ const Home = () => {
         <span className="alert-text">Joke saved!</span>
       </div>
       {changeJoke ? (
-        <div className="joke-card">
-          <p className="joke-id">
-            Joke ID: {joke.id || <Skeleton width="40px" count={1} />}
-          </p>
-          <div className="joke-setup">
-            {joke.setup || <Skeleton width="100%" count={2} />}
-          </div>
-          <div className="joke-punchline">
-            {joke.punchline || <Skeleton width="90%" count={2} />}
-          </div>
-        </div>
+        <JokeCard id={joke.id} setup={joke.setup} punchline={joke.punchline} />
       ) : (
-        <div className="joke-card">
-          <p className="joke-id">
-            <Skeleton width="50%" />
-          </p>
-          <div className="joke-setup">
-            <Skeleton width="100%" count={2} />
-          </div>
-          <div className="joke-punchline">
-            <Skeleton width="90%" count={1} />
-          </div>
-        </div>
+        <JokeCardSkeleton />
       )}
       {isLoading ? (
         <div className="button-group">
