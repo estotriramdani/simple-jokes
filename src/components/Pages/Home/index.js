@@ -25,9 +25,9 @@ const Home = () => {
 
   const handleSaveJoke = () => {
     document.querySelector('.alert').classList.add('up');
-    setTimeout(() => {
-      document.querySelector('.alert').classList.remove('up');
-    }, 3000);
+    // setTimeout(() => {
+    //   document.querySelector('.alert').classList.remove('up');
+    // }, 3000);
     if (window.localStorage.getItem('saved_jokes') === null) {
       window.localStorage.setItem('saved_jokes', '[]');
     }
@@ -35,7 +35,7 @@ const Home = () => {
     saved_jokes.push({
       id: joke.id,
       setup: joke.setup,
-      punhcline: joke.punhcline,
+      punchline: joke.punchline,
     });
     window.localStorage.setItem('saved_jokes', JSON.stringify(saved_jokes));
   };
@@ -108,7 +108,7 @@ const Home = () => {
 
       <div className="button-group">
         <Link to="/saved-jokes" style={{ width: '100%' }}>
-          <button className="button" onClick={handleChangeJoke}>
+          <button className="button">
             <i className="bi bi-check-circle-fill"></i> Saved Joke(s)
           </button>
         </Link>

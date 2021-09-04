@@ -1,0 +1,43 @@
+.saved-jokes-page {
+  justify-content: start !important;
+}
+
+.joke-item {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.joke-list {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  gap: 10px;
+}
+
+.button-danger {
+  /* background: linear-gradient(to left, #4895ef, #4cc9f0); */
+  background-color: #f1faee;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+  color: #e63946;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button-danger:hover {
+  background-color: #e63946;
+  color: #f1faee;
+  transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+  .joke-list,
+  .joke-card,
+  .joke-item,
+  .button-group {
+    width: 600px;
+  }
+}
